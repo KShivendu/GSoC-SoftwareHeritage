@@ -16,7 +16,7 @@ I've to make the [Archive search](http://archive.softwareheritage.org/) more exp
 Goals:
 - Introduce new fields in the search service (Elasticsearch), ingest data from other swh services through their gRPC APIs or through the journal service (Kafka), and create filters/sorting features.
 - Design a grammar, build a parser using TreeSitter and traverse the AST to directly translate the queries into Elasticsearch queries.
-- Implement autocomplete features for the query language in the web UI (optional, but I was able to complete it)
+- Implement autocomplete features for the query language in the web UI. (Optional)
 
 ### Technical Overview:
 - Ingest the following fields into Elasticsearch from the journal service(kafka) or from other swh services:
