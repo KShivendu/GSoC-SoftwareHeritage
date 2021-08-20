@@ -20,21 +20,22 @@ Goals:
 
 ### Technical Overview:
 - Ingest the following fields into Elasticsearch from the journal service(kafka) or from other swh services:
-  - `nb_visits`: Number of visits of an origin
-  - `last_visit_date`: Last visit date
-  - `last_eventful_visit_date`: Last visit date when the snapshot id changed (i.e. change in content of the repo)
-  - `last_revision_date`: Last revision (commit) date
-  - `last_release_date`: Last release date (based on tags)
+  - `nb_visits`: Number of visits of an origin ([D5824](https://forge.softwareheritage.org/D5824))
+  - `last_visit_date`: Last visit date ([D5824](https://forge.softwareheritage.org/D5824))
+  - `last_eventful_visit_date`: Last visit date when the snapshot id changed (i.e. change in content of the repo) ([D5878](https://forge.softwareheritage.org/D5878))
+  - `last_revision_date`: Last revision (commit) date ([D5883](https://forge.softwareheritage.org/D5883))
+  - `last_release_date`: Last release date (based on tags) ([D5883](https://forge.softwareheritage.org/D5883))
 
-- Add support for `sort_by`, `limit` in origin search
-- Add support for searching `license`, `programmingLangauge`, and `keywords` (repo tags + README/description) from repository metadata
-- Add support for searching `date_{created,modified,published}` from repository metadata
-- Implement a [search query langauge](https://docs.softwareheritage.org/devel/swh-search/query-language.html) using [TreeSitter](https://tree-sitter.github.io/tree-sitter/).
+- Add support for `sort_by`, `limit` in origin search ([D5918](https://forge.softwareheritage.org/D5918))
+- Add support for searching `license`, `programmingLangauge`, and `keywords` (repo tags + README/description) from repository metadata ([D5949](https://forge.softwareheritage.org/D5949), [D5963](https://forge.softwareheritage.org/D5963))
+- Add support for searching `date_{created,modified,published}` from repository metadata ([D5964](https://forge.softwareheritage.org/D5964))
+- Implement a [search query langauge](https://docs.softwareheritage.org/devel/swh-search/query-language.html) using [TreeSitter](https://tree-sitter.github.io/tree-sitter/). ([D5990](https://forge.softwareheritage.org/D5990), [D6005](https://forge.softwareheritage.org/D6005))
+  
   The parsers generated from the proposed grammar serve two different purposes:
   - Translation of search queries into the elasticsearch DSL in swh.search (or any
-  other search backend that we may use in the future)
-  - Autocompletion of the queries in the swh.web (Archive UI)
-  
-Some of my recent changes like autocomplete will **take some time before they enter production**.
+  other search backend that we may use in the future) ([D6025](https://forge.softwareheritage.org/D6025), [D6046](https://forge.softwareheritage.org/D6046))
+  - Autocompletion of the queries in the swh.web (Archive UI) ([D6091](https://forge.softwareheritage.org/D6091)) 
+
+Most of my changes in swh-web will **take some time before they enter production**.
 
 They will go live at the [Software Heritage Archive](http://archive.softwareheritage.org/)
