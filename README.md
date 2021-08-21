@@ -4,17 +4,17 @@ Report for Google Summer of Code 21 Project @ Software Heritage
 | Project Details|  |
 |---	|---	|
 |Initial Proposal|  [Improve the Archive Search](https://docs.google.com/document/d/1pEpm7eHnTO3feNmCShuWkOCVFzo-9l2dMrja_OdjyO4/edit)|
-|Repository|[swh-search](https://forge.softwareheritage.org/source/swh-search/) [swh-web](https://forge.softwareheritage.org/source/swh-web/)|
+|Repository|[swh-search](https://forge.softwareheritage.org/source/swh-search/) and [swh-web](https://forge.softwareheritage.org/source/swh-web/)|
+|Mentors| [Valentin Lorentz](https://github.com/Progval) and [Vincent Sellier](https://github.com/vsellier)|
 |Documentation|[Search query langauge syntax](https://docs.softwareheritage.org/devel/swh-search/query-language.html)|
-|Commits| [swh-search (14)](https://github.com/SoftwareHeritage/swh-search/commits?author=KShivendu) [swh-web (4)](https://github.com/SoftwareHeritage/swh-web/commits?author=KShivendu)|
+|Contributions| [swh-search](https://github.com/SoftwareHeritage/swh-search/commits?author=KShivendu) and [swh-web](https://github.com/SoftwareHeritage/swh-web/commits?author=KShivendu)|
 |Duration| 3m 7d (17 May'21 - 23 Aug'21)|
-|Lines changed| [swh-search (+3,366 -404)](https://github.com/SoftwareHeritage/swh-search/graphs/contributors) [swh-web (+161, -20)](https://github.com/SoftwareHeritage/swh-web/graphs/contributors) |
 
 ### TLDR:
 I've to make the [Archive search](http://archive.softwareheritage.org/) more expressive with the help of advanced search features like filters, sorting options, search query language (custom DSL) with autocomplete features (optional)
 
 Goals:
-- Introduce new fields in the search service (Elasticsearch), ingest data from other swh services through their gRPC APIs or through the journal service (Kafka), and create filters/sorting features.
+- Introduce new fields in the search service (Elasticsearch), ingest data from other swh services through their RPC APIs or through the journal service (Kafka), and create filters/sorting features.
 - Design a grammar, build a parser using TreeSitter and traverse the AST to directly translate the queries into Elasticsearch queries.
 - Implement autocomplete features for the query language in the web UI. (Optional)
 
@@ -34,8 +34,14 @@ Goals:
   The parsers generated from the proposed grammar serve two different purposes:
   - Translation of search queries into the elasticsearch DSL in swh.search (or any
   other search backend that we may use in the future) ([D6025](https://forge.softwareheritage.org/D6025), [D6046](https://forge.softwareheritage.org/D6046))
-  - Autocompletion of the queries in the swh.web (Archive UI) ([D6091](https://forge.softwareheritage.org/D6091)) 
+  - Autocompletion of the queries in the swh.web (Archive UI) ([D6091](https://forge.softwareheritage.org/D6091)) (Not merged yet, needs some UX improvements) 
 
-Most of my changes in swh-web will **take some time before they enter production**.
+### Future aspects:
+- Making the autocomplete suggestions dynamic using data from other swh services.
+- Fixing the swh-indexers to mine language data (currently the filters work on the basis of metadata which can be wrong or unavailable)
+- Improving the search UI to support the search DSL (Advanced mode) as well as UI components (Basic mode). (Similar to [Jira query langauge](https://issues.apache.org/jira/browse/ZOOKEEPER-4345?jql=))
 
+
+Most of my changes will **take some time before they enter production**.
 They will go live at the [Software Heritage Archive](http://archive.softwareheritage.org/)
+
