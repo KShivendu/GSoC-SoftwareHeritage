@@ -47,5 +47,4 @@ Tasks completed:
 - Improving the search UI to support the search DSL (Advanced mode) as well as UI components (Basic mode). (Similar to [Jira query language](https://issues.apache.org/jira/browse/ZOOKEEPER-4345?jql=))
 
 
-Most of my changes will **take some time before they enter production**.
-They will go live at the [Software Heritage archive](http://archive.softwareheritage.org/) very soon.
+Most of my work around the query langauge will **take some time before it is visible to the public**. As of now only the beta users and the team members have the access (and it's searching across 170M+ repos!). Once made public, you can use it via the [Software Heritage archive](http://archive.softwareheritage.org/).
